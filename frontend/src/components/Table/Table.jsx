@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from 'react';
 
+
 import API from '../../utils/api';
 import "./Table.css";
 
 const Table = (props) => {
     const [stockData, setStockData] = useState([]);
     const [inputData, setInputData] = useState("");
-    console.log(inputData);
+    const [paginationData, setPaginationData] = useState({});
+    const [currentPage, setcurrentPage] = useState(1);
+    // console.log(inputData);
 
 
     useEffect(() => {
         fetchData();
-    }, [inputData]);
+    }, [inputData, currentPage]);
 
     const fetchData = async () => {
         try {
-            const { data } = await API.get(`/search?name=${inputData}`);
-            setStockData(data);
+            const { data } = await API.get(`/search?name=${inputData}&page=${currentPage}`);
+            setcurrentPage(data.page);
+            setPaginationData(data);
+            setStockData(data.docs);
         } catch (error) {
             console.error(error);
         }
@@ -24,7 +29,11 @@ const Table = (props) => {
 
     const searchEvent = (event) => {
         setInputData(event.target.value);
-      };
+    };
+
+    const changePage = (isNext) => {
+        setcurrentPage(isNext ? currentPage + 1 : currentPage - 1);
+    }
 
     return (
         <div className="dataTable">
@@ -38,7 +47,7 @@ const Table = (props) => {
                     <th>Action</th>
                     <th>CURRENT PRICE</th>
                 </tr>
-                {stockData.map(({ name, symbol, marketCap, currentPrice}) => {
+                {stockData.map(({ name, symbol, marketCap, currentPrice }) => {
                     return (
                         <tr key={name}>
                             <td>{name}</td>
@@ -49,6 +58,18 @@ const Table = (props) => {
                         </tr>
                     )
                 })}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Page {currentPage} of {paginationData.totalPages}</td>
+                    <td><div>
+                        {paginationData.hasPrevPage && <button onClick={() => changePage(false)}>{`<`}</button>}
+                        {`    `}
+                        {paginationData.hasNextPage && <button onClick={() => changePage(true)}>{`>`}</button>}
+                    </div>
+                    </td>
+                </tr>
             </table>
         </div>
     )

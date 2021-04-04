@@ -1,10 +1,22 @@
 const Stock = require("../model/stock");
 
 const search = async (req, res) => {
-  const { name = "" } = req.query;
-  const data = await Stock.find({
-    name: { $regex: `${name}`, $options: "i" },
-  }).lean();
+  const { name = "", page, limit } = req.query;
+  const options = {
+    page: page || 1,
+    limit: limit || 1,
+  };
+  const query = [
+    {
+      $match: {
+        name: { $regex: `${name}`, $options: "i" },
+      },
+    },
+  ];
+
+  const aggregate = Stock.aggregate(query);
+  const data = await Stock.aggregatePaginate(aggregate, options);
+  console.log(data);
   res.status(200).send(data);
 };
 
