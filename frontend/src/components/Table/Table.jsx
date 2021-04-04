@@ -9,7 +9,6 @@ const Table = (props) => {
     const [inputData, setInputData] = useState("");
     const [paginationData, setPaginationData] = useState({});
     const [currentPage, setcurrentPage] = useState(1);
-    // console.log(inputData);
 
 
     useEffect(() => {
@@ -41,11 +40,11 @@ const Table = (props) => {
 
             <table id="myTable">
                 <tr id="tableHeader">
-                    <th >COMPANY NAME</th>
-                    <th>SYMBOL</th>
-                    <th>Market CAP</th>
+                    <th>Company Name</th>
+                    <th>Symbol</th>
+                    <th>Market Cap</th>
                     <th>Action</th>
-                    <th>CURRENT PRICE</th>
+                    <th>Current Price</th>
                 </tr>
                 {stockData.map(({ name, symbol, marketCap, currentPrice }) => {
                     return (

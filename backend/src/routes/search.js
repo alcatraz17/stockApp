@@ -4,7 +4,7 @@ const search = async (req, res) => {
   const { name = "", page, limit } = req.query;
   const options = {
     page: page || 1,
-    limit: limit || 1,
+    limit: limit || 10,
   };
   const query = [
     {
