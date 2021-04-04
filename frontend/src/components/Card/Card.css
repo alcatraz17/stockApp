@@ -1,4 +1,4 @@
-.card-container{
+.card-container {
     margin: 20px 20px 20px 20px;
     width: 200px;
     height: 200px;
@@ -9,18 +9,18 @@
     border-radius: 15px;
 }
 
-.card-container:hover{
+.card-container:hover {
     transform: scale(1.1);
     box-shadow: 0px 0px 15px 0px;
 }
 
-.image-container img{
+.image-container img {
     overflow: hidden;
     height: 100px;
     align-items: flex-end;
 }
 
-.card-content{
+.card-content {
     margin: 1rem;
     margin-top: 0.3rem;
 }
@@ -30,7 +30,7 @@
     padding: 0px;
 }
 
-.card-title{
+.card-title {
     margin-bottom: 0.5rem;
 }
 

@@ -1,11 +1,11 @@
-.dataTable{
-    margin-left:250px;
-    margin-right:250px;
-    margin-bottom:20px;
+.dataTable {
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-bottom: 20px;
     margin-top: 5px;
     widows: 600px;
-    padding:20px;
-    border:2px solid #333;
+    padding: 20px;
+    border: 2px solid #333;
 }
 
 #myInput {
@@ -38,15 +38,16 @@
     /* Increase font-size */
 }
 
-#myTable th, #myTable td {
+#myTable th,
+#myTable td {
     text-align: left;
     /* Left-align text */
     padding: 12px;
     /* Add padding */
-    
+
 }
 
-#myTable th{
+#myTable th {
     background-color: rgb(244, 242, 255);
 }
 
@@ -61,6 +62,6 @@
     background-color: #f1f1f1;
 }
 
-#tableHeader{
+#tableHeader {
     width: 100%;
 }

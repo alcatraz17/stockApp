@@ -16,7 +16,7 @@ const search = async (req, res) => {
 
   const aggregate = Stock.aggregate(query);
   const data = await Stock.aggregatePaginate(aggregate, options);
-  console.log(data);
+  // console.log(data);
   res.status(200).send(data);
 };
 

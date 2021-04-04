@@ -1,5 +1,5 @@
-import React from 'react';
-import "../Card/Card.css"
+import React from "react";
+import "../Card/Card.css";
 
 const Card = (props) => {
     return (
@@ -15,9 +15,8 @@ const Card = (props) => {
                     <h2>{props.rate}</h2>
                 </div>
             </div>
-
         </div>
-    )
-}
+    );
+};
 
-export default Card
+export default Card;
